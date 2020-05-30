@@ -18,44 +18,39 @@ import java.net.Socket;
  */
 public class Web_Server {
 
-    
     public static void main(String[] args) throws IOException {
-        
-        // Server | Sending the first request
+
+            // Server | Sending the first request
         ServerSocket sc = new ServerSocket(9001);
-        Socket socket = sc.accept();
-        InputStream is = socket.getInputStream();
-        Reader r = new InputStreamReader(is, "UTF-8");
-        BufferedReader br = new BufferedReader(r);
-        String line;
-        do {
-            line = br.readLine();
-            if(line == null || "".equals(line)) {
-                break;
-            }
-            System.out.println(line);
-        } while (true);
-        
-        OutputStream os = socket.getOutputStream();
-        Writer w = new OutputStreamWriter(os, "UTF-8");
-        BufferedWriter bw = new BufferedWriter(w);
-        bw.write("HTTP/1.1 200 OK");
-        bw.newLine();
-        bw.write("Content-Type: text/html");
-        bw.newLine();
-        bw.newLine();
-        bw.write("<html>");
-        bw.write("<body>");
-        bw.write("<h1>Hello World!</h1>");
-        bw.write("<body>");
-        bw.write("</html>");
-        bw.flush();
-        
-        
-        socket.close();
+        try (Socket socket = sc.accept();) {
+            InputStream is = socket.getInputStream();
+            Reader r = new InputStreamReader(is, "UTF-8");
+            BufferedReader br = new BufferedReader(r);
+            String line;
+            do {
+                line = br.readLine();
+                if (line == null || "".equals(line)) {
+                    break;
+                }
+                System.out.println(line);
+            } while (true);
+
+            OutputStream os = socket.getOutputStream();
+            Writer w = new OutputStreamWriter(os, "UTF-8");
+            BufferedWriter bw = new BufferedWriter(w);
+            bw.write("HTTP/1.1 200 OK");
+            bw.newLine();
+            bw.write("Content-Type: text/html");
+            bw.newLine();
+            bw.newLine();
+            bw.write("<html>");
+            bw.write("<body>");
+            bw.write("<h1>Hello World!</h1>");
+            bw.write("<body>");
+            bw.write("</html>");
+            bw.flush();
+        }
         sc.close();
     }
-    
+
 }
-
-
