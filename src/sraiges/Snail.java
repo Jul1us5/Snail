@@ -40,4 +40,10 @@ public class Snail extends Thread {
         this.finishTime = new Date();
         System.out.println("Snail FINISH!" + finishTime);
     }
+    public long time() {
+        if(this.startTime != null && this.finishTime != null) {
+            return this.finishTime.getTime() - this.startTime.getTime();
+        }
+        return Long.MAX_VALUE;
+    }
 }
