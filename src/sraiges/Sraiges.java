@@ -12,9 +12,8 @@ public class Sraiges {
             new Snail("Antra"),
             new Snail("Tracia"),
             new Snail("Ketvirta"),
-            new Snail("Penkta"),
-        };
-        System.out.println("Race started at " + new Date());
+            new Snail("Penkta"),};
+        System.out.println("Prasidėjo " + new Date());
         for (Snail snail : snails) {
             snail.start();
         }
@@ -25,7 +24,7 @@ public class Sraiges {
                 // ignored
             }
         }
-        System.out.println("Race finished at " + new Date());
+        System.out.println("Pabaiga " + new Date());
         Arrays.sort(snails, new Comparator<Snail>() {
             @Override
             public int compare(Snail s1, Snail s2) {
@@ -38,7 +37,6 @@ public class Sraiges {
                 }
             }
         });
-        System.out.println("Winner is " + snails[0].getName());
+        System.out.println("Laimėjo: " + snails[0].getName() + " !" );
     }
 }
-

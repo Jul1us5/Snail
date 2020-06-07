@@ -19,7 +19,7 @@ public class Snail extends Thread {
     }
 
     @Override
-public void run() {
+    public void run() {
         startTime = new Date();
         System.out.println("Sraige " + this.getName() + " pradeda distancija: " + startTime);
         int d = 0;
@@ -38,10 +38,11 @@ public void run() {
             }
         }
         this.finishTime = new Date();
-        System.out.println("Snail FINISH!" + finishTime);
+        System.out.println("Sraigė("+ this.getName() + ") finishas " +finishTime);
     }
+
     public long time() {
-        if(this.startTime != null && this.finishTime != null) {
+        if (this.startTime != null && this.finishTime != null) {
             return this.finishTime.getTime() - this.startTime.getTime();
         }
         return Long.MAX_VALUE;
